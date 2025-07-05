@@ -1,0 +1,126 @@
+.timeManage-container {
+  width: 80%;
+  margin: 20px auto;
+  padding: 20px;
+  justify-content: center;
+  /* align-items: center; */
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #f9f9f9;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.task-list {
+ width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.table-row:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+.task-item {
+  background-color: #f1f1f1;
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.task-item:hover {
+  background-color: #e0e0e0;
+}
+
+.task-item.selected {
+  background-color: #d0ebff;
+  border: 2px solid #339af0;
+}
+
+.timeManage-form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.timeManage-form input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.timeManage-container h2 {
+  text-align: center;
+  color: rgb(68, 68, 68);
+}
+
+.timeManage-container h3 {
+  margin-bottom: 10px;
+  color: gray;
+}
+
+h4 {
+  margin-bottom: 10px;
+}
+
+/* ......... */
+.modal-container-time {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content-time {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  position: relative;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.modal-buttons-time {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  /* margin-top: 15px; */
+}
+
+.assign-btn {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.assign-btn:hover {
+  background-color: #388e3c;
+}
+
+.cancel-btn {
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cancel-btn:hover {
+  background-color: #d32f2f;
+}
