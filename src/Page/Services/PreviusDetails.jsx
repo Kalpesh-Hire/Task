@@ -1,9 +1,12 @@
 import { useContext, useState } from "react";
 import { TaskContext } from "../../Context/TaskContext";
 import "../../CSS/PreviousDetail.css";
+import { useSelector } from "react-redux";
 
 function PreviousDetail() {
-  const { tasks } = useContext(TaskContext);
+  // const { tasks } = useContext(TaskContext);
+  const tasks = useSelector((state)=> state.tasksCreate.tasks)
+
   const [filterType, setFilterType] = useState("all");
   const [filterDate, setFilterDate] = useState("");
 

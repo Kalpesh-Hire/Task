@@ -1,9 +1,13 @@
 import { useContext, useState } from "react";
 import { TaskContext } from "../../Context/TaskContext";
 import "../../CSS/TimeManage.css";
+import { useDispatch, useSelector } from "react-redux";
+import { addTimeToTask } from "../../Redux/TaskSlice";
 
 function TimeManage() {
-  const { tasks, addTimeToTask } = useContext(TaskContext);
+  // const { tasks, addTimeToTask } = useContext(TaskContext);
+  const tasks = useSelector((state) => state.tasksCreate.tasks);
+  const dispatch = useDispatch();
 
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [timeData, setTimeData] = useState({
@@ -22,7 +26,8 @@ function TimeManage() {
   const handleSubmitTime = (e) => {
     e.preventDefault();
     if (selectedIndex !== null) {
-      addTimeToTask(selectedIndex, timeData);
+      // addTimeToTask(selectedIndex, timeData);
+      dispatch(addTimeToTask({ index: selectedIndex, timeData: timeData }));
       setSelectedIndex(null);
       setTimeData({ date: "", startTime: "", endTime: "" });
     }
@@ -49,7 +54,28 @@ function TimeManage() {
 
       <div className="task-list">
         {tasks.length === 0 ? (
-          <p>No tasks</p>
+          <table className="task-table">
+            <thead>
+              <tr className="border-head">
+                <th>Sr</th>
+                <th>Task Time</th>
+                <th>Task Type</th>
+                <th>Task Date</th>
+                <th>Task Start</th>
+                <th>Task End</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="table-row">
+                <td>No Task</td>
+                <td>No Task</td>
+                <td>No Task</td>
+                <td>No Task</td>
+                <td>No Task</td>
+                <td>No Task</td>
+              </tr>
+            </tbody>
+          </table>
         ) : (
           <>
             <h3>Add Time in the Tasks</h3>
@@ -67,6 +93,7 @@ function TimeManage() {
               <tbody>
                 {tasks.map((task, index) => (
                   <tr
+                    key={index}
                     className="table-row"
                     onClick={() => handleSelectTask(index)}
                   >

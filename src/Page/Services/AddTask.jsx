@@ -1,9 +1,13 @@
 import React, { useContext, useState } from "react";
 import "../../CSS/AddTask.css";
-import { TaskContext } from "../../Context/TaskContext";
+// import { TaskContext } from "../../Context/TaskContext";
+import { useDispatch, useSelector } from "react-redux";
+import { addTask, editTask } from "../../Redux/TaskSlice";
 
 function AddTask() {
-  const { tasks, addTask, editTasks } = useContext(TaskContext);
+  const tasks = useSelector((state)=> state.tasksCreate.tasks)
+  const dispatch = useDispatch()
+  // const { tasks, addTask, editTasks } = useContext(TaskContext);
   const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -11,11 +15,11 @@ function AddTask() {
     description: "",
   });
 
-  const [editTask, setEditTask] = useState(null);
+  const [editIndex, setEditIndex] = useState(null);
 
   const handleAddTaskClick = () => {
     setFormData({ name: "", type: "", description: "" });
-    setEditTask(null);
+    setEditIndex(null);
     setShowForm(true);
   };
 
@@ -29,26 +33,27 @@ function AddTask() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (editTask != null) {
-      editTasks(editTask, formData);
+    if (editIndex != null) {
+      // editTask(editTask, formData)
+      dispatch(editTask({index:editIndex, updatedTask:formData}))
     } else {
-      addTask(formData);
+      dispatch(addTask(formData))
     }
 
     setFormData({ name: "", type: "", description: "" });
     setShowForm(false);
-    setEditTask(null);
+    setEditIndex(null);
   };
 
   const handleEdit = (index) => {
-    setEditTask(index);
+    setEditIndex(index);
     setFormData(tasks[index]);
     setShowForm(true);
   };
 
   const closeForm = () => {
     setShowForm(false);
-    setEditTask(null);
+    setEditIndex(null);
   };
 
   return (
@@ -64,7 +69,7 @@ function AddTask() {
       {showForm && (
         <div className="modal-container-addTask">
           <div className="modal-content-addTask">
-            <h3>{editTask !== null ? "Edit Task" : "Add New Task"}</h3>
+            <h3>{editIndex !== null ? "Edit Task" : "Add New Task"}</h3>
             <form onSubmit={handleSubmit} className="addTask-form">
               <div className="first-input-add">
                 <input
@@ -96,7 +101,7 @@ function AddTask() {
               />
               <div className="modal-buttons">
                 <button type="submit" className="addTask-submit">
-                  {editTask !== null ? "Update Task" : "Submit Task"}
+                  {editIndex !== null ? "Update Task" : "Submit Task"}
                 </button>
                 <button
                   type="button"
