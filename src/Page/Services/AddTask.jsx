@@ -4,9 +4,13 @@ import "../../CSS/AddTask.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addTask, editTask } from "../../Redux/TaskSlice";
 
+import { taskTypeCategories } from "../../assets/Data"; 
+
 function AddTask() {
-  const tasks = useSelector((state)=> state.tasksCreate.tasks)
-  const dispatch = useDispatch()
+  const tasks = useSelector((state) => state.tasksCreate.tasks);
+  const dispatch = useDispatch();
+
+  // console.log(categoryCounts);
   // const { tasks, addTask, editTasks } = useContext(TaskContext);
   const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState({
@@ -35,9 +39,9 @@ function AddTask() {
 
     if (editIndex != null) {
       // editTask(editTask, formData)
-      dispatch(editTask({index:editIndex, updatedTask:formData}))
+      dispatch(editTask({ index: editIndex, updatedTask: formData }));
     } else {
-      dispatch(addTask(formData))
+      dispatch(addTask(formData));
     }
 
     setFormData({ name: "", type: "", description: "" });
@@ -81,14 +85,35 @@ function AddTask() {
                   onChange={handleInputChange}
                   required
                 />
-                <input
+                {/* <input
                   type="text"
                   className="addTask-input"
                   name="type"
                   placeholder="Task Type"
                   value={formData.type}
                   onChange={handleInputChange}
-                />
+                /> */}
+
+                <select
+                  className="addTask-input"
+                  name="type"
+                  placeholder="Task Type"
+                  value={formData.type}
+                  onChange={handleInputChange}
+                >
+                  <option value="">Select</option>
+                  {Object.entries(taskTypeCategories).map(
+                    ([category, types], index) => (
+                      <optgroup className="" key={index} label={category}>
+                        {types.map((option, index) => (
+                          <option key={index} value={option}>
+                            {option}{" "}
+                          </option>
+                        ))}
+                      </optgroup>
+                    )
+                  )}
+                </select>
               </div>
               <textarea
                 name="description"

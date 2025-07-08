@@ -1,6 +1,5 @@
 import { useState } from "react";
 import "./App.css";
-import Dashboard from "./DummyNotUsed/Dashboard";
 import { Route, Routes } from "react-router-dom";
 import LoginPage from "./Page/LoginPage";
 import RegisterPage from "./Page/Regestration";
@@ -12,6 +11,7 @@ import TimeAnalysis from "./Page/AnalysyisPages/TimeAnalysis";
 import AddTask from "./Page/Services/AddTask";
 import TimeManage from "./Page/Services/TimeManage";
 import PreviousDetail from "./Page/Services/PreviusDetails";
+import Dashboard from "./Page/Services/Dashboard";
 
 function App() {
   return (
@@ -36,10 +36,10 @@ function App() {
           <Route path="profile/task-manage" element={<AddTask />} />
           <Route path="profile/time-manage" element={<TimeManage />} />
           <Route path="profile/previous" element={<PreviousDetail />} />
+          <Route path="profile/dashboard" element={<Dashboard />} />
 
           {/* Time Sidevar */}
           <Route path="analysis/time-analysis" element={<TimeAnalysis />} />
-          
         </Route>
       </Routes>
     </>

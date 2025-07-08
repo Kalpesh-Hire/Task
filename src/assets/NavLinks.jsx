@@ -7,24 +7,25 @@ const headerLinks = [
 
 const sidebarLinks = {
   Home: [
-    { title: 'Education report', route: '/home/edureport' },
-    { title: 'Time Report', route: '/home/time' },
-    { title: 'Analytics', route: '/home/notifications' }
+    { title: "Education report", route: "/home/edureport" },
+    { title: "Time Report", route: "/home/time" },
+    { title: "Analytics", route: "/home/notifications" },
   ],
   Service: [
-    { title: 'Previous Detail', route: '/profile/previous' },
-    { title: 'Time Manage', route: '/profile/time-manage' },
-    { title: 'Task Manage', route: '/profile/task-manage' }
+    { title: "Previous Detail", route: "/profile/previous" },
+    { title: "Time Manage", route: "/profile/time-manage" },
+    { title: "Task Manage", route: "/profile/task-manage" },
+    { title: "Dashboard", route: "/profile/dashboard" },
   ],
   Analysis: [
-    { title: 'Time Analysis', route: '/analysis/time-analysis' },
-    { title: 'Task', route: '/analysis/task-analysis' },
-    { title: 'Security', route: '/analysis/security' }
+    { title: "Time Analysis", route: "/analysis/time-analysis" },
+    { title: "Task", route: "/analysis/task-analysis" },
+    { title: "Security", route: "/analysis/security" },
   ],
   Reports: [
-    { title: 'Sales', route: '/reports/sales' },
-    { title: 'Inventory', route: '/reports/inventory' },
-    { title: 'User Activity', route: '/reports/activity' }
-  ]
+    { title: "Sales", route: "/reports/sales" },
+    { title: "Inventory", route: "/reports/inventory" },
+    { title: "User Activity", route: "/reports/activity" },
+  ],
 };
 export {headerLinks, sidebarLinks}
